@@ -1,26 +1,29 @@
-import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-import {NativeStackNavigator} from '@react-navigation/stack';
-import {NavigationContainer} from '@react-navigation/stack';
 import Login from './screens/Login';
-import Home  from './screens/Home';
+import Signup from './screens/Signup';
+import Home from './screens/Home';
+import Cart from './screens/Cart';
+import Checkout from './screens/Checkout';
 
-export default function App() {
-  const MainStackNavigator = NativeStackNavigator();
+import {NavigationContainer} from '@react-navigation/native';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
+
+const Stack = createNativeStackNavigator();
+
+const App = () => {
   return (
-    <View style={{flex:1,}} >
-      <NavigationContainer>
-         <MainStackNavigator.Navigator screenOptions={{headerShown: false}}
-          initialRouteName= "Login">
-          <MainStackNavigator.Screen name="Login" component= {Login} / >
-          <MainStackNavigator.Screen name="Home" component= {Home} / >
-         </MainStackNavigator.Navigator>
-      </NavigationContainer>
-      
-    </View>
+    <NavigationContainer>
+      <Stack.Navigator screenOptions={{headerShown: false}}>
+        <Stack.Screen name="Login" component={Login} />
+        <Stack.Screen name="Signup" component= {Signup}/>
+        <Stack.Screen name="Home" component={Home} />
+        <Stack.Screen name="Cart" component={Cart} />
+        <Stack.Screen name= "Checkout" component={Checkout}/>
+        
+      </Stack.Navigator>
+    </NavigationContainer>
   );
-}
+};
 
-
+export default App;
